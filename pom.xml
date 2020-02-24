@@ -39,7 +39,7 @@ limitations under the License.
     <maven.compiler.testTarget>${java.version}</maven.compiler.testTarget>
     <maven.compiler.testSource>${java.version}</maven.compiler.testSource>
 
-    <skipAllTests>false</skipAllTests>
+    <github.global.server>github</github.global.server>
 
     <protoc.version>3.11.4</protoc.version>
   </properties>
@@ -59,6 +59,14 @@ limitations under the License.
       <email>xxlabaza@gmail.com</email>
     </developer>
   </developers>
+
+  <distributionManagement>
+    <repository>
+        <id>internal.repo</id>
+        <name>Temporary Staging Repository</name>
+        <url>file://${project.build.directory}/mvn-repo</url>
+    </repository>
+  </distributionManagement>
 
   <dependencies>
     <dependency>
@@ -188,6 +196,40 @@ limitations under the License.
                 </requireJavaVersion>
               </rules>
             </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.8.2</version>
+        <configuration>
+          <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
+        <version>0.12</version>
+        <configuration>
+          <message>Maven artifacts for ${project.version}</message>
+          <noJekyll>true</noJekyll>
+          <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+          <branch>refs/heads/mvn-repo</branch>
+          <includes>
+            <include>**/*</include>
+          </includes>
+          <repositoryOwner>binary-routing</repositoryOwner>
+          <repositoryName>proto-model-java</repositoryName>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>site</goal>
+            </goals>
+            <phase>deploy</phase>
           </execution>
         </executions>
       </plugin>

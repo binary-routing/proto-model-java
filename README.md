@@ -3,11 +3,22 @@
 
 This is a project, which contains the automatically generating data transfer objects from the protobuf files.
 
-To include the project's model, classes use one of the following dependency declarations:
+## Usage
 
-**Maven:**
+To include the project's classes add the following sections to your project:
 
 ```xml
+<repositories>
+  <repository>
+    <id>proto-model-java-mvn-repo</id>
+    <url>https://raw.github.com/binary-routing/proto-model-java/mvn-repo/</url>
+    <snapshots>
+      <enabled>true</enabled>
+      <updatePolicy>always</updatePolicy>
+    </snapshots>
+  </repository>
+</repositories>
+...
 <dependencies>
   ...
   <dependency>
@@ -19,8 +30,12 @@ To include the project's model, classes use one of the following dependency decl
 </dependencies>
 ```
 
-**Gradle:**
+## Deploy
 
-```groovy
-'com.xxlabaza.test:proto-model-java:1.0.0'
+To deploy a new project's version in Github, use the following command:
+
+```bash
+$> ./mvnw -s settings.xml clean deploy
 ```
+
+Where `settings.xml` contains your credentials for Github (with **github** id).

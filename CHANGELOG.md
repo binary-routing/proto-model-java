@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [1.0.0](https://github.com/binary-routing/proto-model-java/releases/tag/1.0.0) - 2020-02-24
+## [1.0.0](https://github.com/binary-routing/proto-model-java/tree/mvn-repo/com/xxlabaza/test/proto-model-java/1.0.0) - 2020-02-24
 
 Initial release.
 
