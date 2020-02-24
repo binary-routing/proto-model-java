@@ -22,7 +22,5 @@ To include the project's model, classes use one of the following dependency decl
 **Gradle:**
 
 ```groovy
-...
 'com.xxlabaza.test:proto-model-java:1.0.0'
-...
 ```
