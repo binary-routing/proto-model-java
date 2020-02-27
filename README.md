@@ -24,7 +24,7 @@ To include the project's classes add the following sections to your project:
   <dependency>
     <groupId>com.xxlabaza.test</groupId>
     <artifactId>proto-model-java</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
   </dependency>
   ...
 </dependencies>
